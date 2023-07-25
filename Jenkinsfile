@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Store') {
             steps {
-               echo 'Hello World'
+               bat "docker push localhost:5000/hello:${env.BUILD_TAG}"
             } 
         }
     }
