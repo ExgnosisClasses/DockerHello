@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-               bat "docker run -d -p 80:5000 localhost:5000/hello:${env.BUILD_TAG} --name Hello-${env.BUILD_TAG}"
+               bat 'docker run -d -p 80:5000 localhost:5000/hello:${env.BUILD_TAG} --name "Hello-${env.BUILD_TAG}"'
             } 
         }
     }
