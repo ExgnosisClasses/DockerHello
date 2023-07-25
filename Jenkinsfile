@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               echo 'Hello World'
+               bat 'docker build -t hello:{env.BUILD_NUMBER} -f Dockerfile'
             } 
         }
         stage('Hello') {
