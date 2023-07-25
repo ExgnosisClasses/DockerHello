@@ -1,16 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        // This is the id of the registry container
-        REGISTRY = "2d079d765f7e"
-    }
-
     stages {
         stage("Registry") {
             // Ensure the registry is running
             steps {
-                bat "docker start #env.{REGISTRY}"
+                bat "docker start registry"
             }
         }
         stage('Build') {
