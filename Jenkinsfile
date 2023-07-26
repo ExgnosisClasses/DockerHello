@@ -28,7 +28,9 @@ pipeline {
         }
         stage('Clean') {
             // Remove the image from the local image cache
-            bat "docker image rm localhost:5000/hello:${env.BUILD_TAG}"
+            steps {           
+                bat "docker image rm localhost:5000/hello:${env.BUILD_TAG}"
+            }
         }
         stage('Deploy') {
             when {
