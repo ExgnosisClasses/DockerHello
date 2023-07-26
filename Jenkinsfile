@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Determins whether or not to run the service
-        DEPLOY = "NO"
+        DEPLOY = "YES"
     }
 
     stages {
