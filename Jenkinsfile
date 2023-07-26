@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DEPLOY = "NO"
+    }
+
     stages {
         stage("Registry") {
             // Ensure the registry is running
@@ -19,9 +23,17 @@ pipeline {
             } 
         }
         stage('Deploy') {
+            when {
+                environment name: 'DEPLOY', value: 'YES'
+            }
             steps {
                bat "docker run -d -p 80:5000 localhost:5000/hello:${env.BUILD_TAG}"
             } 
+        }
+    }
+    post {
+        always {
+            bat "docker stop registry"
         }
     }
 }
